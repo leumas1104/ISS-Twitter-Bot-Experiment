@@ -4,7 +4,7 @@ import tweepy
 import time
 import os
 
-fileName = "lastID.txt"
+lastTweet = 0
 
 #from keys.py in the same file directory
 CONSUMER_KEY = os.environ.get('consumer_key')
@@ -49,23 +49,11 @@ def getISSData():
 
 #get Id of last responded tweet
 def getLastID():
-    try:
-        file = open(fileName, 'r')
-    except:
-        file = open(fileName, 'w+')
-        file.write(str(0))
-        file.close()
-        file = open(fileName, 'r')
-    finally:
-        ID = int(file.read())
-        file.close()
-        return ID
+    return lastTweet
 
 #overwrite last responded tweet
 def writeLastID(ID):
-    file = open(fileName, 'w+')
-    file.write(str(ID))
-    file.close()
+    lastTweet = ID
     return
 
 
