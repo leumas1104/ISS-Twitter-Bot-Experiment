@@ -1,2 +1,0 @@
-# testbotinf
-Twitterbot
