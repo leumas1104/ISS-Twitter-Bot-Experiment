@@ -4,7 +4,7 @@ import tweepy
 import time
 import os
 
-
+'''
 fileName = "lastID.txt"
 
 #from keys.py in the same file directory
