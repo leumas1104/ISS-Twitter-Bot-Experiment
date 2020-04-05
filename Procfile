@@ -1,1 +1,1 @@
-web: python TwitterBot.py runserver 0.0.0.0:5000
+web: python TwitterBot.py --bind 0.0.0.0:${PORT} wsgi
