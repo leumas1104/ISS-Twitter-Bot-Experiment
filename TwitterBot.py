@@ -8,23 +8,18 @@ app = Flask(__name__)
 @app.route("/")
 def test():
     fileName = "lastID.txt"
-    print('test')
     #from keys.py in the same file directory
     CONSUMER_KEY = os.environ.get('consumer_key')
     CONSUMER_SECRET = os.environ.get('consumer_secret')
     ACCESS_TOKEN = os.environ.get('access_token')
     ACCESS_TOKEN_SECRET = os.environ.get('access_token_secret')
-    print('test')
 
     # Authenticate to Twitter
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
-    print('test')
     # Create API object
     api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
-    print('test')
-    lastTweet = 0
     #Verify keys
     try:
         api.verify_credentials()
@@ -73,13 +68,9 @@ def test():
 
 
     while True:
-
+        print(getLastID())
         #search for mentions, q = querry
         tweets = api.search(q="@testBotInf1", since_id = getLastID())
-
-        #test
-        for tweet in tweets:
-            print(api.get_status(tweet.id))
 
         #check for mentions
         for tweet in tweets:
@@ -105,9 +96,10 @@ def test():
                 continue
             status_msg = '@{} Hello! Here you go!'.format(sn) + '\n\n' + getISSData()
             api.update_status(status_msg, in_reply_to_status_id = tweet.id)
-            print("REPLIED TO: " + sn + " WITH: " + status_msg)
+            print("Replied")
             if getLastID() < tweet.id:
                 writeLastID(tweet.id)
+        print(getLastID())
         time.sleep(600)
     return "Working, hopefully"
 
