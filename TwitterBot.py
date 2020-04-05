@@ -8,7 +8,7 @@ file = open('lastID','w+')
 file.write("Hi")
 file.close()
 file = open('lastID','r')
-print('file.read()')
+print(file.read())
 
 try:
     while True:
