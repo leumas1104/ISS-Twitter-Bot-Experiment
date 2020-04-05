@@ -10,22 +10,22 @@ print("doing")
 
 
 fileName = "lastID.txt"
-
+print('test')
 #from keys.py in the same file directory
 CONSUMER_KEY = os.environ.get('consumer_key')
 CONSUMER_SECRET = os.environ.get('consumer_secret')
 ACCESS_TOKEN = os.environ.get('access_token')
 ACCESS_TOKEN_SECRET = os.environ.get('access_token_secret')
-
+print('test')
 
 # Authenticate to Twitter
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
-
+print('test')
 # Create API object
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
-
+print('test')
 lastTweet = 0
 #Verify keys
 try:
