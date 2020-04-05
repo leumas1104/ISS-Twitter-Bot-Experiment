@@ -112,4 +112,5 @@ def test():
         time.sleep(600)
     return
 
-
+if __name__ == '__main__':
+    app.run()
