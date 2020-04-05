@@ -4,7 +4,7 @@ import tweepy
 import time
 import os
 
-print("HI")
+os.environ['lastID'] = str(2)
 
 try:
     while True:
