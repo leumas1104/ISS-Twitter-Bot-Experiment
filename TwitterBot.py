@@ -4,7 +4,11 @@ import tweepy
 import time
 import os
 
-lastTweet = 0
+
+os.environ['lastID'] = str(2)
+
+'''
+
 
 #from keys.py in the same file directory
 CONSUMER_KEY = os.environ.get('consumer_key')
@@ -93,4 +97,4 @@ while True:
         print("REPLIED TO: " + sn + " WITH: " + status_msg)
         if getLastID() < tweet.id:
             writeLastID(tweet.id)
-    time.sleep(600)
+    time.sleep(600)'''
