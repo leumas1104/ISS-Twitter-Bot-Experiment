@@ -6,7 +6,10 @@ import os
 from flask import Flask
 app = Flask(__name__)
 @app.route("/")
-def hello():
+print("doing")
+app()
+def app():
+    print("YES")
     fileName = "lastID.txt"
 
     #from keys.py in the same file directory
