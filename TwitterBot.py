@@ -7,8 +7,6 @@ from flask import Flask
 app = Flask(__name__)
 @app.route("/")
 def test():
-    return TwitterBot()
-def TwitterBot():
     fileName = "lastID.txt"
     print('test')
     #from keys.py in the same file directory
@@ -111,5 +109,6 @@ def TwitterBot():
             if getLastID() < tweet.id:
                 writeLastID(tweet.id)
         time.sleep(600)
+    return
 
 
