@@ -4,6 +4,8 @@ import tweepy
 import time
 import os
 
+print("HI")
+
 try:
     while True:
         time.sleep(600)
