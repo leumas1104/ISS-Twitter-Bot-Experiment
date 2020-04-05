@@ -4,7 +4,11 @@ import tweepy
 import time
 import os
 
-os.environ['lastID'] = str(2)
+file = open('lastID','w+')
+file.write("Hi")
+file.close()
+file = open('lastID','r')
+print('file.read()')
 
 try:
     while True:
