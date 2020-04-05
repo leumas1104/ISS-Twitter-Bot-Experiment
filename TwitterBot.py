@@ -74,9 +74,7 @@ while True:
     #search for mentions, q = querry
     tweets = api.search(q="@testBotInf1", since_id = getLastID())
 
-    #test
-    for tweet in tweets:
-        print(api.get_status(tweet.id))
+
 
     #check for mentions
     for tweet in tweets:
@@ -102,7 +100,7 @@ while True:
             continue
         status_msg = '@{} Hello! Here you go!'.format(sn) + '\n\n' + getISSData()
         api.update_status(status_msg, in_reply_to_status_id = tweet.id)
-        print("REPLIED TO: " + sn + " WITH: " + status_msg)
+        print("replied")
         if getLastID() < tweet.id:
             writeLastID(tweet.id)
     time.sleep(600)
