@@ -1,1 +1,1 @@
-web: python TwitterBot.py --bind 0.0.0.0:${PORT} wsgi
+web: gunicorn main:app
