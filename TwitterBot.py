@@ -6,7 +6,7 @@ import os
 from flask import Flask
 app = Flask(__name__)
 @app.route("/")
-def TwitterBot:
+def TwitterBot():
     fileName = "lastID.txt"
     print('test')
     #from keys.py in the same file directory
