@@ -6,9 +6,9 @@ import os
 from flask import Flask
 app = Flask(__name__)
 @app.route("/")
-def test():
+def TwitterBot():
     print("Start")
-def Twitterbot()
+
     fileName = "lastID.txt"
     #from keys.py in the same file directory
     CONSUMER_KEY = os.environ.get('consumer_key')
