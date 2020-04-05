@@ -7,7 +7,6 @@ from flask import Flask
 app = Flask(__name__)
 @app.route("/")
 def test():
-    return "Hi"
     fileName = "lastID.txt"
     print('test')
     #from keys.py in the same file directory
@@ -110,7 +109,7 @@ def test():
             if getLastID() < tweet.id:
                 writeLastID(tweet.id)
         time.sleep(600)
-    return
+    return "Working, hopefully"
 
 if __name__ == '__main__':
     app.run()
