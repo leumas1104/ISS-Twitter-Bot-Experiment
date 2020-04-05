@@ -103,6 +103,8 @@ while True:
         print("replied")
         if getLastID() < tweet.id:
             writeLastID(tweet.id)
-    time.sleep(600)
+    while True:
+        print("Hi")
+        time.sleep(1)
         
         
