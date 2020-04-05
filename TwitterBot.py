@@ -4,8 +4,11 @@ import tweepy
 import time
 import os
 
-while True:
-    time.sleep(600)
+try:
+    while True:
+        time.sleep(600)
+except:
+    print('Failed')
 
 '''
 
