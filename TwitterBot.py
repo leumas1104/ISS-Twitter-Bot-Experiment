@@ -6,6 +6,8 @@ import os
 
 
 os.environ['lastID'] = str(2)
+while True:
+    time.sleep(600)
 
 '''
 
