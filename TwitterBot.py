@@ -10,7 +10,6 @@ app = Flask(__name__)
 def TwitterBot():
     print("Start")
 
-    fileName = "lastID.txt"
     #from keys.py in the same file directory
     CONSUMER_KEY = os.environ.get('consumer_key')
     CONSUMER_SECRET = os.environ.get('consumer_secret')
@@ -50,24 +49,14 @@ def TwitterBot():
 
     #get Id of last responded tweet
     def getLastID():
-        try:
-            file = open(fileName, 'r')
-        except:
-            file = open(fileName, 'w+')
-            file.write(str(0))
-            file.close()
-            file = open(fileName, 'r')
-        finally:
-            ID = int(file.read())
-            file.close()
-            return ID
+        return str(os.environ.get('lastID'))
 
     #overwrite last responded tweet
     def writeLastID(ID):
-        file = open(fileName, 'w+')
-        file.write(str(ID))
-        file.close()
-        return
+        url = "https://api.heroku.com/apps/testbotinf/config-vars"
+        data = {"lastID": str(ID)}
+        headers = {"Content-Type": "application/json","Accept": "application/vnd.heroku+json; version=3","Authorization": "Bearer 8be0bdcd-def8-48d1-8c1a-6397f5ed52c3"}
+        requests.patch(url, data = json.dumps(data),  headers = headers)
 
 
     print(getLastID())
