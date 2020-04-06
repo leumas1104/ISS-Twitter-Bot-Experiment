@@ -49,7 +49,7 @@ def TwitterBot():
 
     #get Id of last responded tweet
     def getLastID():
-        return str(os.environ.get('lastID'))
+        return int(os.environ.get('lastID'))
 
     #overwrite last responded tweet
     def writeLastID(ID):
