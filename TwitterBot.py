@@ -55,7 +55,7 @@ def TwitterBot():
     def writeLastID(ID):
         url = "https://api.heroku.com/apps/testbotinf/config-vars"
         data = {"lastID": str(ID)}
-        headers = {"Content-Type": "application/json","Accept": "application/vnd.heroku+json; version=3","Authorization": "Bearer 8be0bdcd-def8-48d1-8c1a-6397f5ed52c3"}
+        headers = {"Content-Type": "application/json","Accept": "application/vnd.heroku+json; version=3","Authorization": "Bearer " + os.environ.get('heroku_api_token')}
         requests.patch(url, data = json.dumps(data),  headers = headers)
 
 
