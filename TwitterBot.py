@@ -62,7 +62,9 @@ def TwitterBot():
     print(getLastID())
     #search for mentions, q = querry
     tweets = api.search(q="@testBotInf1", since_id = getLastID())
-
+    
+    if len(tweets)==0:
+        return "No tweets"
     #check for mentions
     for tweet in tweets:
         replyToMe = False
