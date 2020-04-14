@@ -96,4 +96,6 @@ def TwitterBot():
     return "Working, hopefully"
 
 if __name__ == '__main__':
+    RunApp()
+def RunApp():
     app.run()
