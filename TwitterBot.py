@@ -69,6 +69,7 @@ def TwitterBot():
     if len(tweets)==0:
         return "No tweets"
     #check for mentions
+    highestID = getLastID()
     for tweet in tweets:
         replyToMe = False
         skip = False
@@ -93,8 +94,10 @@ def TwitterBot():
         status_msg = '@{} Hello! Here you go!'.format(sn) + '\n\n' + getISSData()
         api.update_status(status_msg, in_reply_to_status_id = tweet.id)
         print("Replied")
-        if getLastID() < tweet.id:
-            writeLastID(tweet.id)
+        if highestID < tweet.id:
+            highestID = tweet.id
+    writeLastID(highestID)
+    print(highestID)
     print(getLastID())
     return "Working, hopefully"
 
