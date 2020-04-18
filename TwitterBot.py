@@ -8,7 +8,13 @@ from flask import Flask
 app = Flask(__name__)
 @app.route("/")
 def TwitterBot():
-    print("Start")
+    
+    #get Id of last responded tweet
+    def getLastID():
+        return int(os.environ.get('lastID'))
+    
+    
+    print(getLastID())
 
     #from keys.py in the same file directory
     CONSUMER_KEY = os.environ.get('consumer_key')
@@ -47,9 +53,7 @@ def TwitterBot():
             data += "\n\t" + person['name']
         return data
 
-    #get Id of last responded tweet
-    def getLastID():
-        return int(os.environ.get('lastID'))
+
 
     #overwrite last responded tweet
     def writeLastID(ID):
@@ -59,7 +63,6 @@ def TwitterBot():
         requests.patch(url, data = json.dumps(data),  headers = headers)
 
 
-    print(getLastID())
     #search for mentions, q = querry
     tweets = api.search(q="@testBotInf1", since_id = getLastID())
     
