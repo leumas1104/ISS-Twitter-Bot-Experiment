@@ -66,6 +66,7 @@ def TwitterBot():
     #search for mentions, q = querry
     tweets = api.search(q="@testBotInf1", since_id = getLastID())
     highestID = getLastID()
+    unchangedID = highestID
     if not len(tweets)==0:
         #check for mentions
         for tweet in tweets:
@@ -94,8 +95,10 @@ def TwitterBot():
             print("Replied")
             if highestID < tweet.id:
                 highestID = tweet.id
-    writeLastID(highestID+1)
-    writeLastID(highestID)
+    pl = 0
+    if unchangedID == highestID:
+        pl = 1
+    writeLastID(highestID + pl)
     print(highestID)
     print(getLastID())
     return "Working, hopefully"
