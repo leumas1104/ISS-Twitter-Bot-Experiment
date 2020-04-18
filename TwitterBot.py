@@ -94,6 +94,7 @@ def TwitterBot():
             print("Replied")
             if highestID < tweet.id:
                 highestID = tweet.id
+    writeLastID(highestID+1)
     writeLastID(highestID)
     print(highestID)
     print(getLastID())
