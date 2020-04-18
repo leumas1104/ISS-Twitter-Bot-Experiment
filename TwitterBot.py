@@ -65,37 +65,35 @@ def TwitterBot():
 
     #search for mentions, q = querry
     tweets = api.search(q="@testBotInf1", since_id = getLastID())
-    
-    if len(tweets)==0:
-        return "No tweets"
-    #check for mentions
     highestID = getLastID()
-    for tweet in tweets:
-        replyToMe = False
-        skip = False
-        sn = tweet.user.screen_name
-        #check if it is me
-        if sn == api.me().screen_name:
-            skip = True
-        #check if tweet contains "@testBotInf1"
-        if not tweet.in_reply_to_status_id == None:
-            for mention in tweet.entities["user_mentions"]:
-                if mention["screen_name"] == api.me().screen_name:
-                    replyToMe = True
-        if replyToMe == False:
-            if tweet.text.find("@"+api.me().screen_name) == -1:
+    if not len(tweets)==0:
+        #check for mentions
+        for tweet in tweets:
+            replyToMe = False
+            skip = False
+            sn = tweet.user.screen_name
+            #check if it is me
+            if sn == api.me().screen_name:
                 skip = True
-        else:
-            if tweet.text.count("@"+api.me().screen_name) <= 1:
-                skip = True
-        if skip == True:
-            print("Skipped")
-            continue
-        status_msg = '@{} Hello! Here you go!'.format(sn) + '\n\n' + getISSData()
-        api.update_status(status_msg, in_reply_to_status_id = tweet.id)
-        print("Replied")
-        if highestID < tweet.id:
-            highestID = tweet.id
+            #check if tweet contains "@testBotInf1"
+            if not tweet.in_reply_to_status_id == None:
+                for mention in tweet.entities["user_mentions"]:
+                    if mention["screen_name"] == api.me().screen_name:
+                        replyToMe = True
+            if replyToMe == False:
+                if tweet.text.find("@"+api.me().screen_name) == -1:
+                    skip = True
+            else:
+                if tweet.text.count("@"+api.me().screen_name) <= 1:
+                    skip = True
+            if skip == True:
+                print("Skipped")
+                continue
+            status_msg = '@{} Hello! Here you go!'.format(sn) + '\n\n' + getISSData()
+            api.update_status(status_msg, in_reply_to_status_id = tweet.id)
+            print("Replied")
+            if highestID < tweet.id:
+                highestID = tweet.id
     writeLastID(highestID)
     print(highestID)
     print(getLastID())
